@@ -41,33 +41,33 @@ void setup() {
   setupLEDPins();
 }
 
-void loop(){
-  for (int thisPin = 2; thisPin <= 9; thisPin++){
+void loop() {
+  for (int thisPin = 2; thisPin <= 9; thisPin++) {
     detect_and_countdown(thisPin);
   }
 }
 
-void detect_and_countdown(int buttonPin){
+void detect_and_countdown(int buttonPin) {
   buttonState = digitalRead(buttonPin);
   
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH:
  if (buttonState == HIGH) {     
     // turn LEDs on:
-    for(int i=0; i <= ledPinCount; i++){
+    for(int i=0; i <= ledPinCount; i++) {
       digitalWrite(ledPins[i], HIGH);
     }
     
     delay(1000);
     
-    for(int i=0; i <= ledPinCount; i++){
+    for(int i=0; i <= ledPinCount; i++) {
       blink(ledPins[i], 4);
       digitalWrite(ledPins[i], LOW);
     }
   }
 }
 
-void blink(int led, int repeats){
+void blink(int led, int repeats) {
   for(int i=0; i < repeats; i++) {
     digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
     delay(125);               // wait for a 0.125 second
