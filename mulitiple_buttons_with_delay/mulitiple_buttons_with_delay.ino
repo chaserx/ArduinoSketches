@@ -44,11 +44,7 @@ void setupLEDPins() {
   }
 }
 
-void setup() {
-  // initialize the LED pin as an output:
-  //pinMode(ledPin, OUTPUT);      
-  // initialize the pushbutton pin as an input:
-  //pinMode(buttonPin, INPUT);     
+void setup() {    
   setupButtonPins();
   setupLEDPins();
 }
@@ -71,10 +67,9 @@ void detect_and_burn(int buttonPin){
  if (buttonState == HIGH) {     
     // turn LED on:    
     digitalWrite(ledPin, HIGH);
-    // wait 50 seconds
-    delay(50000);
-    // blink for 10 seconds
-    blink(ledPin);
+    delay(500);
+    // blink for 5 seconds
+    blink(ledPin, 5);
     // turn LED off:
     digitalWrite(ledPin, LOW);
   }
@@ -84,9 +79,9 @@ void detect_and_burn(int buttonPin){
   }
 }
 
-// flash for 10 seconds
-void blink(int led){
-  for(int i=0; i<10; i++) {
+// flash for 1 second blink per repeat
+void blink(int led, int repeats){
+  for(int i=0; i < repeats; i++) {
     digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
     delay(500);               // wait for a 0.5 second
     digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
