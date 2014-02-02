@@ -1,3 +1,18 @@
+/*
+Multiple LED countdown
+
+Trigger full panel of LEDs, blink each then countdown until all dark.
+
+The circuit:
+ * LEDs attached from pin 10 - 12 to ground 
+ * pushbutton attached to pin 2 from +5V
+ * 10K resistor attached to pin 2 from ground
+ 
+Chase Southard
+Feb 2, 2014
+
+*/
+
 // array of LED pins:
 const int ledPins[] = {10,11,12,13};
 const int ledPinCount = 4;
@@ -46,7 +61,7 @@ void detect_and_countdown(int buttonPin){
     delay(1000);
     
     for(int i=0; i <= ledPinCount; i++){
-      blink(ledPins[i], 3);
+      blink(ledPins[i], 4);
       digitalWrite(ledPins[i], LOW);
     }
   }
@@ -55,8 +70,8 @@ void detect_and_countdown(int buttonPin){
 void blink(int led, int repeats){
   for(int i=0; i < repeats; i++) {
     digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(300);               // wait for a 0.5 second
+    delay(125);               // wait for a 0.125 second
     digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-    delay(300);               // wait for a 0.5 second 
+    delay(125);               // wait for a 0.125 second 
   }
 }
